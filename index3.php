@@ -39,6 +39,7 @@
                   $db = new mysqli('127.0.0.1', 'root', 'codigo', 'lavanderia');
                   $sql = "SELECT * FROM inventory_control";
                   $datos = $db->query($sql);
+                  $gran_total = 0;
                   while($dato = $datos->fetch_array()){
                     ?>
                 <tr>
@@ -55,7 +56,12 @@
                   <td><?php echo $dato["available"]; ?></td>
                   <td><?php echo $dato["total"]; ?></td>
                     </tr>
-                <?php } ?>
+                <?php
+                  $gran_total += $dato["total"];
+                } ?>
+                <tr>
+                  <td><?php echo $grand_total; ?></td>
+                </tr>
               </tbody>
             </table>
           </div>
